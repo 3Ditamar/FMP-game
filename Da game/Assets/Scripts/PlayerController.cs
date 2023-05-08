@@ -31,6 +31,7 @@ namespace TarodevController {
         
         private void Update() {
             if(!_active) return;
+
             // Calculate velocity
             Velocity = (transform.position - _lastPosition) / Time.deltaTime;
             _lastPosition = transform.position;
@@ -45,23 +46,21 @@ namespace TarodevController {
 
             MoveCharacter(); // Actually perform the axis movement
 
+            // Check if we're facing left
+            bool isFacingLeft = _currentHorizontalSpeed < 0;
+            
+            // Update the character animator
             if (animator != null) {
-                animator.SetFloat("Speed", Mathf.Abs(_currentHorizontalSpeed));
-
-                if (_currentHorizontalSpeed > 0) {
-                    animator.SetBool("isFacingLeft", false);
-                } else if (_currentHorizontalSpeed < 0) {
-                    animator.SetBool("isFacingLeft", true);
-                }
-
-                if (_currentHorizontalSpeed < -0.1f) {
-                    animator.Play("RunAnimationLL");
-                } else if (_currentHorizontalSpeed > 0.1f) {
-                    animator.Play("RunAnimationLR");
+                if (isFacingLeft) {
+                    animator.Play("IdleAnimationLL");
                 } else {
-                    animator.Play("IdleAnimation");
+                    animator.Play("IdleAnimationLR");
                 }
+                animator.SetFloat("Speed", Mathf.Abs(_currentHorizontalSpeed));
             }
+
+            // Flip the character sprite if we're facing left
+            transform.localScale = isFacingLeft ? new Vector3(-1f, 1f, 1f) : new Vector3(1f, 1f, 1f);
         }
 
 
