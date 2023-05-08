@@ -49,7 +49,21 @@ namespace TarodevController {
             if (animator != null) {
                 animator.SetFloat("Speed", Mathf.Abs(_currentHorizontalSpeed));
             }
+
+            if (_currentHorizontalSpeed > 0) {
+                transform.localScale = new Vector3(1f, 1f, 1f); // Face right
+            }
+            else if (_currentHorizontalSpeed < 0) {
+                transform.localScale = new Vector3(-1f, 1f, 1f); // Face left
+            }
 			
+            // Check if the character is moving left or right
+            bool isMovingLeft = Input.X < 0;
+            bool isMovingRight = Input.X > 0;
+
+            // Set the isFacingLeft parameter in the Animator
+            animator.SetBool("isFacingLeft", isMovingLeft);
+
         }
 
 
