@@ -39,6 +39,7 @@ namespace TarodevController {
             // Speed up idle while running
             _anim.SetFloat(IdleSpeedKey, Mathf.Lerp(1, _maxIdleSpeed, Mathf.Abs(_player.Input.X)));
 
+
             // Splat
             if (_player.LandingThisFrame) {
                 _anim.SetTrigger(GroundedKey);

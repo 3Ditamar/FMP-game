@@ -19,6 +19,8 @@ namespace TarodevController {
         public Vector3 RawMovement { get; private set; }
         public bool Grounded => _colDown;
 
+        public Animator animator;
+
         private Vector3 _lastPosition;
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
 
@@ -42,6 +44,11 @@ namespace TarodevController {
             CalculateJump(); // Possibly overrides vertical
 
             MoveCharacter(); // Actually perform the axis movement
+
+            //Itamar - My addition of the character animator which idk if it'll work or not...
+            if (animator != null) {
+                animator.SetFloat("Speed", Mathf.Abs(_currentHorizontalSpeed));
+            }
 			
         }
 
