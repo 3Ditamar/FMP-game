@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -20,6 +21,9 @@ namespace TarodevController {
         public bool Grounded => _colDown;
 
         public Animator animator;
+		
+		 // Check if we're facing left
+        public bool isFacingLeft;
 
         private Vector3 _lastPosition;
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
@@ -46,9 +50,11 @@ namespace TarodevController {
 
             MoveCharacter(); // Actually perform the axis movement
 
-            // Check if we're facing left
-            bool isFacingLeft = _currentHorizontalSpeed < 0;
-            
+
+			
+			
+			
+	
             // Update the character animator
             if (animator != null) {
                 if (isFacingLeft) {
@@ -72,9 +78,22 @@ namespace TarodevController {
                 JumpUp = UnityEngine.Input.GetButtonUp("Jump"),
                 X = UnityEngine.Input.GetAxisRaw("Horizontal")
             };
+			
             if (Input.JumpDown) {
                 _lastJumpPressed = Time.time;
             }
+			
+			
+			if(Input.X > 0) {
+			   //move to the right
+				isFacingLeft = false;
+				Debug.Log ("right  " + isFacingLeft);
+			 }
+			else if(Input.X < 0) { 
+			// move to the left 
+				isFacingLeft = true;
+				Debug.Log ("left  " + isFacingLeft);
+			}
         }
 
         #endregion
