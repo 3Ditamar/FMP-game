@@ -57,11 +57,13 @@ namespace TarodevController {
 	
             // Update the character animator
             if (animator != null) {
-                if (isFacingLeft) {
-                    animator.Play("IdleAnimationLL");
-                } else {
-                    animator.Play("IdleAnimationLR");
-                }
+                if (_currentHorizontalSpeed == 0) {
+					if (isFacingLeft) {
+                    	animator.Play("IdleAnimationLL");
+					} else {
+						animator.Play("IdleAnimationLR");
+					}
+				}
                 animator.SetFloat("Speed", Mathf.Abs(_currentHorizontalSpeed));
             }
 
@@ -87,12 +89,12 @@ namespace TarodevController {
 			if(Input.X > 0) {
 			   //move to the right
 				isFacingLeft = false;
-				Debug.Log ("right  " + isFacingLeft);
+//				Debug.Log ("right  " + isFacingLeft);
 			 }
 			else if(Input.X < 0) { 
 			// move to the left 
 				isFacingLeft = true;
-				Debug.Log ("left  " + isFacingLeft);
+//				Debug.Log ("left  " + isFacingLeft);
 			}
         }
 
