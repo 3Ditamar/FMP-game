@@ -24,6 +24,7 @@ namespace TarodevController {
 		
 		 // Check if we're facing left
         public bool isFacingLeft;
+		public bool IsGrounded;
 
         private Vector3 _lastPosition;
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
