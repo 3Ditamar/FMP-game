@@ -24,7 +24,6 @@ namespace TarodevController {
 		
 		 // Check if we're facing left
         public bool isFacingLeft;
-		public bool IsGrounded;
 
         private Vector3 _lastPosition;
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
@@ -86,7 +85,6 @@ namespace TarodevController {
                 _lastJumpPressed = Time.time;
             }
 			
-			
 			if(Input.X > 0) {
 			   //move to the right
 				isFacingLeft = false;
@@ -97,6 +95,7 @@ namespace TarodevController {
 				isFacingLeft = true;
 //				Debug.Log ("left  " + isFacingLeft);
 			}
+			
         }
 
         #endregion
@@ -256,6 +255,8 @@ namespace TarodevController {
         private float _lastJumpPressed;
         private bool CanUseCoyote => _coyoteUsable && !_colDown && _timeLeftGrounded + _coyoteTimeThreshold > Time.time;
         private bool HasBufferedJump => _colDown && _lastJumpPressed + _jumpBuffer > Time.time;
+		
+		private bool IsGrounded; //idk itamar
 
         private void CalculateJumpApex() {
             if (!_colDown) {
@@ -276,9 +277,11 @@ namespace TarodevController {
                 _coyoteUsable = false;
                 _timeLeftGrounded = float.MinValue;
                 JumpingThisFrame = true;
+//				IsGrounded = false; //idk itamar
             }
             else {
                 JumpingThisFrame = false;
+//				IsGrounded = true; //idk itamar
             }
 
             // End the jump early if button released
@@ -290,6 +293,18 @@ namespace TarodevController {
             if (_colUp) {
                 if (_currentVerticalSpeed > 0) _currentVerticalSpeed = 0;
             }
+			
+			
+			//idk itamar from here
+			
+			
+            // Update the character animator
+			if (Input.JumpUp &&CanUseCoyote || HasBufferedJump) {
+					IsGrounded = false;
+			} else {
+				IsGrounded = true;
+			}
+
         }
 
         #endregion
