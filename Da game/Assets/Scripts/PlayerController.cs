@@ -59,9 +59,9 @@ namespace TarodevController {
             if (animator != null) {
                 if (_currentHorizontalSpeed == 0) {
 					if (isFacingLeft) {
-                    	animator.Play("IdleAnimationLL");
+                    	animator.SetBool("isFacingLeft", true);
 					} else {
-						animator.Play("IdleAnimationLR");
+                    	animator.SetBool("isFacingLeft", false);
 					}
 				}
                 animator.SetFloat("Speed", Mathf.Abs(_currentHorizontalSpeed));
@@ -121,10 +121,26 @@ namespace TarodevController {
             // Ground
             LandingThisFrame = false;
             var groundedCheck = RunDetection(_raysDown);
+			
+			if (groundedCheck == true)
+			{
+				animator.SetBool("IsGrounded", true);
+//				Debug.Log("Grounded check: "+groundedCheck);
+			}
+			else //idk itamar moment
+			{
+				animator.SetBool("IsGrounded", false);
+			}
+				
+				
             if (_colDown && !groundedCheck) _timeLeftGrounded = Time.time; // Only trigger when first leaving
             else if (!_colDown && groundedCheck) {
                 _coyoteUsable = true; // Only trigger when first touching
                 LandingThisFrame = true;
+				
+//				//IsGrounded = true;
+//				animator.SetBool("IsGrounded", true);
+//				Debug.Log ("IsGrounded true");
             }
 
             _colDown = groundedCheck;
@@ -271,13 +287,20 @@ namespace TarodevController {
 
         private void CalculateJump() {
             // Jump if: grounded or within coyote threshold || sufficient jump buffer
-            if (Input.JumpDown && CanUseCoyote || HasBufferedJump) {
+            
+//			if (Input.JumpDown) {
+//			//	IsGrounded = false; //idk itamar
+//				animator.SetBool("IsGrounded", false);
+////				Debug.Log("Grounded check: false");
+//			}
+			
+			if (Input.JumpDown && CanUseCoyote || HasBufferedJump) {
                 _currentVerticalSpeed = _jumpHeight;
                 _endedJumpEarly = false;
                 _coyoteUsable = false;
                 _timeLeftGrounded = float.MinValue;
                 JumpingThisFrame = true;
-//				IsGrounded = false; //idk itamar
+				
             }
             else {
                 JumpingThisFrame = false;
@@ -298,12 +321,15 @@ namespace TarodevController {
 			//idk itamar from here
 			
 			
-            // Update the character animator
-			if (Input.JumpUp &&CanUseCoyote || HasBufferedJump) {
-					IsGrounded = false;
-			} else {
-				IsGrounded = true;
-			}
+//            // Update the character animator
+//			if (Input.JumpUp) {
+//				//IsGrounded = false;
+//				 animator.SetBool("IsGrounded", false);
+//				Debug.Log ("IsGrounded false");
+//			} else {
+//				
+//				
+//			}
 
         }
 

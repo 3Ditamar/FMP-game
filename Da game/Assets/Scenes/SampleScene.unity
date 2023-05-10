@@ -6532,6 +6532,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1876236008}
+    - target: {fileID: 6332941607185342928, guid: d491c43289459416b8fc40ae0722b6da, type: 3}
+      propertyPath: _groundCheckPoint
+      value: 
+      objectReference: {fileID: 405295249}
     - target: {fileID: 7289015901228854605, guid: d491c43289459416b8fc40ae0722b6da, type: 3}
       propertyPath: m_Name
       value: Player
