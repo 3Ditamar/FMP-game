@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fallDetector : MonoBehaviour
+public class fallDetector3 : MonoBehaviour
 {
     
 	public GameObject Player;
 //	public GameObject FallDetectorObject;
 	
-	private float posX = -13f;
-	private float posY = 6f;
+	private float posX = 166f;
+	private float posY = -31f;
 	
 	
 	//private float posX = FallDetectorObject.transform.position.x;
