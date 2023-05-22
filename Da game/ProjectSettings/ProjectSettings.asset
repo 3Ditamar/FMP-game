@@ -13,14 +13,14 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Itamar
-  productName: DaGame
+  productName: 'Sunny Side Up: A Stroll by the Knoll'
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.72156864, g: 0.80392164, b: 0.83921576, a: 1}
   m_ShowUnitySplashScreen: 1
-  m_ShowUnitySplashLogo: 0
+  m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 1
+  m_SplashScreenAnimation: 0
   m_SplashScreenLogoStyle: 0
   m_SplashScreenDrawMode: 0
   m_SplashScreenBackgroundAnimationZoom: 1
@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 1253864593, guid: 49ad5b1c19ff7ba49b41c36fee3f7a39, type: 3}
     duration: 2
-  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 68cefd989ec924e748f8983460716f48, type: 3}
+  m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
@@ -156,7 +156,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.Itamar.DaGame
+    Standalone: com.Itamar.Sunny-Side-Up--A-Stroll-by-the-Knoll
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -276,7 +276,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: f0c7ef8c47fc045708fb6d2a3e277357, type: 3}
+      m_Icon: {fileID: 2800000, guid: e0b2e72a9081798498e3e56650fb0d0c, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
